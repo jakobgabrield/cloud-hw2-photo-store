@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import SearchPage from './pages/SearchPage';
+import UploadPage from './pages/UploadPage';
+import React, {useState} from 'react'
+import "./App.css"
 
 function App() {
+  const [state, setState] = useState("search");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav className="nav">
+          <text className="nav-link" onClick={() => setState("search")}>Search</text>
+          <text className="nav-link" onClick={() => setState("upload")}>Upload</text>
+        </nav>
+      <div className="App">
+        {state == "search" ? <SearchPage /> : <UploadPage />}
+      </div>
     </div>
   );
 }
